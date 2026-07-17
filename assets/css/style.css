@@ -16,7 +16,7 @@ html{
 
 body{
     background:#f8f5f1;
-    color:#333;
+    color:#070707;
     line-height:1.6;
 }
 
@@ -65,7 +65,7 @@ img{
 .hero{
     height:90vh;
     background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-    url('../img/banner.jpg') center center/cover no-repeat;
+    url('/assets/img/logo.png') center center/cover no-repeat;
     display:flex;
     align-items:center;
     justify-content:center;
