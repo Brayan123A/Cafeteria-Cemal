@@ -1,8 +1,10 @@
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
     <div class="container">
 
-        <a class="navbar-brand d-flex align-items-center" href="index.php">
-            <img src="assets/img/logo.png"
+        <a class="navbar-brand d-flex align-items-center" href="../paginas/index.php">
+            <img src="../assets/img/logo.png"
                  width="100"
                  class="me-2">
 
@@ -36,21 +38,21 @@
                 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="nosotros.php">
+                    <a class="nav-link" href="../paginas/nosotros.php">
                         <i class="bi bi-people"></i>
                         Nosotros
                     </a>
                 </li>
 
                <li class="nav-item">
-                <a href="menu.php" class="nav-link">
+                <a href="../paginas/menu.php" class="nav-link">
                     <i class="bi bi-list"></i>
                     Menu
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="registarse.php" class="nav-link">
+                <a href="../paginas/registro.php" class="nav-link">
                     <i class="bi bi-person-plus"></i>
                     Registarse
                 </a>

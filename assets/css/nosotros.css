@@ -1,0 +1,20 @@
+.nosotros{
+    padding:80px 0;
+    background:#f8f5f2;
+}
+
+.nosotros h2{
+    text-align:center;
+    font-size:48px;
+    color:#6F4E37;
+    margin-bottom:30px;
+}
+
+.nosotros p{
+    max-width:900px;
+    margin:0 auto 25px;
+    text-align:justify;
+    font-size:18px;
+    color:#555;
+    line-height:1.9;
+}
