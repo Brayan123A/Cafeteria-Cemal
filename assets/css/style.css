@@ -1,263 +1,371 @@
-/*==============================
-    GOOGLE FONTS
-==============================*/
+/*==========================================================================
+    1. CONFIGURACIÓN GENERAL Y FUENTES
+==========================================================================*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 html{
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
 }
 
 body{
-    background:#ffffff;
-    color:#070707;
-    line-height:1.6;
+    background: #ffffff; 
+    color: #ffffff;
+    line-height: 1.5;
 }
 
 a{
-    text-decoration:none;
+    text-decoration: none;
 }
 
 ul{
-    list-style:none;
+    list-style: none;
 }
 
 img{
-    max-width:100%;
-    display:block;
+    max-width: 100%;
+    display: block;
 }
 
 .container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
 }
 
-/*==============================
-    BOTONES
-==============================*/
-
+/*==========================================================================
+    2. COMPONENTES GLOBALES (BOTONES)
+==========================================================================*/
 .btn{
-    display:inline-block;
-    background:#6F4E37;
-    color:#fff;
-    padding:14px 35px;
-    border-radius:40px;
-    transition:.3s;
-    font-weight:600;
+    display: inline-block;
+    background: #ffffff; /* Café Premium Oscuro */
+    color: #ffffff;
+    padding: 12px 28px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border: none;
+    text-align: center;
 }
 
 .btn:hover{
-    background:#4B2E1E;
-    transform:translateY(-3px);
+    background: #e2e0de;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(74, 44, 17, 0.2);
 }
 
-/*==============================
-    HERO
-==============================*/
+/*==========================================================================
+    3. MENÚ DE NAVEGACIÓN (FORZADO ESTRICTO A LA DERECHA)
+==========================================================================*/
+.navbar {
+    background: #141414 !important; 
+    padding: 22px 0; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04); 
+    border-bottom: 1px solid #000000;
+}
 
-/*==============================
-    HERO
-==============================*/
+/* Forzamos al contenedor de Bootstrap a empujar todo a la derecha */
+.navbar .container,
+.navbar .container-fluid {
+    display: flex !important;
+    justify-content: flex-end !important; /* Empuja el bloque de menú a la derecha */
+    align-items: center !important;
+}
 
+.navbar-collapse {
+    display: flex !important;
+    justify-content: flex-end !important; /* Asegura el alineado derecho interno */
+    flex-grow: 0 !important; /* Evita que ocupe todo el ancho */
+}
+
+.navbar-brand {
+    color: #4a2c11 !important; 
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: auto; /* Si tienes logo a la izquierda, esto lo mantiene ahí */
+}
+
+.navbar-brand img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+}
+
+/* Lista de enlaces alineada a la derecha */
+.navbar-nav {
+    display: flex !important;
+    flex-direction: row !important; 
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 25px; 
+    margin-left: auto !important; /* Empuje final definitivo */
+    margin-right: 0 !important;
+}
+
+.navbar-nav .nav-item {
+    list-style: none;
+}
+
+/* Enlaces del menú */
+.navbar-nav .nav-link {
+    color: #4a5568 !important; 
+    font-size: 16px; 
+    font-weight: 500;
+    padding: 8px 6px !important;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+/* Línea animada inferior */
+.navbar-nav .nav-link:not(.dropdown-toggle)::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #4a2c11;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.navbar-nav .nav-link:not(.dropdown-toggle):hover::after,
+.navbar-nav .nav-link.active:not(.dropdown-toggle)::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #4a2c11 !important; 
+}
+
+/* BOTÓN DESTACADO DEL FINAL (Registrarse / Perfil) */
+.navbar-nav .nav-item:last-child .nav-link,
+.navbar-nav .nav-item .dropdown-toggle {
+    background: #4a2c11 !important; 
+    color: #ffffff !important;
+    padding: 10px 24px !important;
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(74, 44, 17, 0.1);
+}
+
+.navbar-nav .nav-item:last-child .nav-link:hover,
+.navbar-nav .nav-item .dropdown-toggle:hover {
+    background: #2f1c0a !important;
+    color: #ffffff !important;
+}
+
+.navbar-nav .nav-link i {
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+}
+/*==========================================================================
+    4. MENÚS DESPLEGABLES (DROPDOWNS)
+==========================================================================*/
+.dropdown-menu{
+    border: 1px solid #ddd2d2;
+    border-radius: 10px;
+    padding: 8px 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    background: #ffffff;
+}
+
+.dropdown-item{
+    padding: 10px 20px;
+    color: #4a5568;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background: #dfd9d9;
+    color: #4a2c11 !important;
+}
+
+.dropdown-divider{
+    margin: 6px 0;
+    border-top: 1px solid #edf2f7;
+}
+
+.text-danger:hover{
+    background: #fff5f5 !important;
+    color: #e53e3e !important;
+}
+
+/*==========================================================================
+    5. SECCIÓN HERO (SIN CUADRO BLANCO DE FORMULARIO)
+==========================================================================*/
 .hero{
-    width:100%;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-
-    background-image:
-        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-        url("../img/logo.png"); /* Cambia la ruta si es necesario */
-
-    background-position:center;
-    background-size:cover;
-    background-repeat:no-repeat;
+    width: 100%;
+    min-height: 75vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 20px;
+    
+    /* Fondo con filtro muy sutil para apreciar tu logo de fondo sin taparlo */
+    background-image: 
+        linear-gradient(rgba(248, 249, 250, 0.88), rgba(248, 249, 250, 0.88)), 
+        url("../img/logo.png"); 
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.hero-content{
-    color:#e9e2e2;
-    max-width:900px;
-    padding:20px;
-    z-index:2;
+/* Transformamos la bienvenida para que NO parezca un formulario */
+.hero .bienvenida {
+    background: transparent; /* Eliminamos el fondo blanco de caja */
+    padding: 0;
+    box-shadow: none; /* Quitamos la sombra de tarjeta */
+    border: none; /* Quitamos bordes */
+    max-width: 700px;
+    width: 100%;
 }
 
-.hero h1{
-    font-size:4rem;
-    margin-bottom:20px;
-    font-weight:700;
+.hero .bienvenida h1 {
+    font-size: 42px; /* Letras más grandes e impactantes */
+    color: #4a2c11;
+    font-weight: 800;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5); /* Sombra de texto para legibilidad */
 }
 
-.hero p{
-    font-size:1.3rem;
-    margin-bottom:35px;
+.hero .bienvenida p {
+    font-size: 18px;
+    color: #4a5568;
+    margin-bottom: 30px;
+    font-weight: 400;
 }
 
-.hero .btn{
-    display:inline-block;
-    background:#8B5A2B;
-    color:#fff;
-    padding:15px 40px;
-    border-radius:40px;
-    transition:.3s;
+/*==========================================================================
+    6. SECCIÓN INFORMACIÓN GENERAL
+==========================================================================*/
+section.bienvenida {
+    background: #ffffff; 
+    padding: 90px 0;
+    border-top: 1px solid #edf2f7;
 }
 
-.hero .btn:hover{
-    background:#5C3A21;
-    transform:translateY(-4px);
+section.bienvenida .container {
+    background: #f8f9fa;
+    padding: 50px;
+    border-radius: 16px;
+    max-width: 950px;
+    border: 1px solid #edf2f7;
 }
 
-/*==============================
-    SECCIONES
-==============================*/
-
-section{
-    padding:80px 0;
+section.bienvenida h2 {
+    font-size: 28px;
+    color: #4a2c11;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
-section h2{
-    text-align:center;
-    margin-bottom:35px;
-    color:#6F4E37;
+section.bienvenida p {
+    font-size: 16px;
+    color: #4a5568;
+    line-height: 1.9;
+    text-align: justify;
+}
+
+/*====================================
+        TÍTULO CAFETERÍA CEMAL
+====================================*/
+
+.titulo-cemal{
     font-size:38px;
-}
-
-.bienvenida p{
-    max-width:900px;
-    margin:auto;
-    text-align:center;
-    font-size:18px;
-}
-
-/*==============================
-    CARDS
-==============================*/
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-    margin-top:40px;
-}
-
-.card{
-    background:#fff;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-}
-
-.card img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-}
-
-.card h3{
+    font-weight:800;
     color:#6F4E37;
-    padding:20px 20px 10px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin:0;
+    padding:10px 0;
+    position:relative;
+    display:inline-block;
 }
 
-.card p{
-    padding:0 20px 20px;
+.titulo-cemal::after{
+    content:"";
+    width:70%;
+    height:4px;
+    background:#D4A373;
+    border-radius:5px;
+    position:absolute;
+    left:50%;
+    bottom:-8px;
+    transform:translateX(-50%);
 }
 
-/*==============================
-    GALERIA
-==============================*/
+/*==========================================================================
+    7. DISEÑO RESPONSIVO (MÓVILES)
+==========================================================================*/
+@media (max-width: 991px){
 
-.galeria{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
+    
+    
+    .navbar-collapse{
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        margin-top: 10px;
+        border: 1px solid #edf2f7;
+        flex-direction: column;
+    }
 
-.galeria img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
-    border-radius:10px;
-    transition:.3s;
-}
+    .navbar-nav{
+        flex-direction: column !important; 
+        align-items: stretch;
+        gap: 12px;
+        margin-left: 0;
+        width: 100%;
+    }
 
-.galeria img:hover{
-    transform:scale(1.05);
-}
+    .navbar-nav .nav-link{
+        display: flex;
+        justify-content: center; 
+        text-align: center;
+    }
 
-/*==============================
-    FORMULARIO
-==============================*/
+    .navbar-nav .nav-link::after {
+        display: none; 
+    }
 
-form{
-    max-width:700px;
-    margin:auto;
-}
+    .navbar-nav .nav-item:last-child .nav-link,
+    .navbar-nav .nav-item .dropdown-toggle {
+        justify-content: center;
+    }
 
-form input,
-form textarea{
-    width:100%;
-    padding:15px;
-    margin-bottom:20px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    outline:none;
-    font-size:16px;
-}
+    .dropdown-menu{
+        position: static !important;
+        width: 100%;
+        margin-top: 10px;
+        box-shadow: none;
+        background: #f8f9fa; 
+    }
+    
+    .dropdown-item{
+        text-align: center;
+    }
 
-form textarea{
-    resize:none;
-    height:180px;
-}
-
-form button{
-    background:#6F4E37;
-    color:#fff;
-    border:none;
-    padding:15px 35px;
-    border-radius:40px;
-    cursor:pointer;
-    font-size:16px;
-    transition:.3s;
-}
-
-form button:hover{
-    background:#4B2E1E;
-}
-
-/*==============================
-    PAGINAS
-==============================*/
-
-.pagina h1{
-    text-align:center;
-    color:#6F4E37;
-    margin-bottom:30px;
-    font-size:45px;
-}
-
-/*==============================
-    FOOTER
-==============================*/
-
-footer{
-    background:#3d2b1f;
-    color:#fff;
-    text-align:center;
-    padding:25px;
-    margin-top:50px;
+    .hero .bienvenida h1 {
+        font-size: 30px;
+    }
 }

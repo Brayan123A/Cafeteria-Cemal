@@ -1,0 +1,102 @@
+/*=========================================
+        EDITAR PERFIL
+=========================================*/
+
+.editar-perfil{
+    min-height:100vh;
+    background:#f5f5f5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px 20px;
+}
+
+.formulario-perfil{
+    width:100%;
+    max-width:550px;
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.formulario-perfil h2{
+    text-align:center;
+    color:#6F4E37;
+    margin-bottom:30px;
+    font-size:30px;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#333;
+}
+
+.form-group input{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:16px;
+    transition:.3s;
+}
+
+.form-group input:focus{
+    border-color:#8B5A2B;
+    outline:none;
+    box-shadow:0 0 10px rgba(139,90,43,.2);
+}
+
+.botones{
+    display:flex;
+    gap:15px;
+    margin-top:30px;
+}
+
+.btn-guardar{
+    flex:1;
+    background:#6F4E37;
+    color:#fff;
+    border:none;
+    padding:14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+
+.btn-guardar:hover{
+    background:#4B2E1E;
+}
+
+.btn-cancelar{
+    flex:1;
+    background:#dc3545;
+    color:#fff;
+    text-align:center;
+    padding:14px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.btn-cancelar:hover{
+    background:#bb2d3b;
+}
+
+@media(max-width:600px){
+
+    .formulario-perfil{
+        padding:25px;
+    }
+
+    .botones{
+        flex-direction:column;
+    }
+
+}

@@ -1,66 +1,91 @@
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
-    <div class="container">
 
-        <a class="navbar-brand d-flex align-items-center" href="../paginas/index.php">
-            <img src="../assets/img/logo.png"
-                 width="100"
-                 class="me-2">
 
-            <div>
-              
-                <strong>Cafetería CEMAL</strong><br>
-                <small style="font-size:12px;">Sabor que inspira</small>
-            </div>
+ 
+
+
+  
+
+</div>
+<ul class="navbar-nav ms-auto">
+    
+    <li class="nav-item">
+        <a class="nav-link active" href="../paginas/index.php">
+            <i class="bi bi-house"></i>
+            Inicio
         </a>
+    </li>
 
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#menu">
+    <li class="nav-item">
+        <a class="nav-link" href="../paginas/nosotros.php">
+            <i class="bi bi-people"></i>
+            Nosotros
+        </a>
+    </li>
 
-            <span class="navbar-toggler-icon"></span>
+    <li class="nav-item">
+        <a class="nav-link" href="../paginas/menu.php">
+            <i class="bi bi-list"></i>
+            Menú
+        </a>
+    </li>
 
-        </button>
+    <?php if(isset($_SESSION['id'])){ ?>
 
-        <div class="collapse navbar-collapse" id="menu">
+        <li class="nav-item dropdown">
 
-            <ul class="navbar-nav ms-auto">
+            <a class="nav-link dropdown-toggle"
+               href="#"
+               id="perfilDropdown"
+               role="button"
+               data-bs-toggle="dropdown">
 
-                <li class="nav-item">
-                    <a class="nav-link active" href="index.php">
-                        <i class="bi bi-house"></i>
-                        Inicio
+                👤 <?php echo htmlspecialchars($_SESSION['nombre']); ?>
+
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+
+                <li>
+                    <a class="dropdown-item" href="../perfil.php">
+                        👤 Perfil
                     </a>
                 </li>
 
-                
-
-                <li class="nav-item">
-                    <a class="nav-link" href="../paginas/nosotros.php">
-                        <i class="bi bi-people"></i>
-                        Nosotros
+                <li>
+                    <a class="dropdown-item" href="../editar_perfil.php">
+                        ✏️ Editar perfil
                     </a>
                 </li>
 
-               <li class="nav-item">
-                <a href="../paginas/menu.php" class="nav-link">
-                    <i class="bi bi-list"></i>
-                    Menu
-                </a>
-            </li>
+                <li><hr class="dropdown-divider"></li>
 
-            <li class="nav-item">
-                <a href="../paginas/registro.php" class="nav-link">
-                    <i class="bi bi-person-plus"></i>
-                    Registarse
-                </a>
-            </li>
+                <li>
+                    <a class="dropdown-item text-danger" href="../logout.php">
+                        🚪 Cerrar sesión
+                    </a>
+                </li>
 
             </ul>
 
-        </div>
+        </li>
 
-    </div>
-</nav>
+    <?php }else{ ?>
+
+        <li class="nav-item">
+            <a href="../auth/login.php" class="nav-link">
+                <i class="bi bi-box-arrow-in-right"></i>
+                Iniciar sesión
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="../auth/registro.php" class="nav-link">
+                <i class="bi bi-person-plus"></i>
+                Registrarse
+            </a>
+        </li>
+
+    <?php } ?>
+
+</ul>
