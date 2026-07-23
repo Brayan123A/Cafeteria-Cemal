@@ -19,7 +19,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="..//menu.php">
+        <a class="nav-link" href="../paginas/orden.php">
             <i class="bi bi-list"></i>
             Menú
         </a>

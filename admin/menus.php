@@ -16,7 +16,7 @@ if(isset($_POST['guardar'])){
     $imagen = $_FILES['imagen']['name'];
     $tmp = $_FILES['imagen']['tmp_name'];
 
-    move_uploaded_file($tmp,"../assets/uploads/menus/".$imagen);
+    move_uploaded_file($tmp,"../assets/img/uploads".$imagen);
 
     mysqli_query($conn,"INSERT INTO menus(nombre,descripcion,precio,imagen)
     VALUES('$nombre','$descripcion','$precio','$imagen')");
