@@ -27,6 +27,8 @@
                    
 
                     <li><a href="nosotros.php" class="text-white text-decoration-none">Nosotros</a></li>
+                     <li><a href="menu.php" class="text-white text-decoration-none">Menú</a></li>
+
 
                    
 

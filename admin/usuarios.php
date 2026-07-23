@@ -2,97 +2,126 @@
 session_start();
 include("../config/conexion.php");
 
-if(!isset($_SESSION['admin'])){
-    header("Location: ../auth/login.php");
+if (!isset($_SESSION['id'])) {
+    header("Location: ../login.php");
     exit();
 }
 
-$usuarios = mysqli_query($conn, "SELECT * FROM usuarios");
+if ($_SESSION['rol'] != "admin") {
+    header("Location: dashboard.php");
+    exit();
+}
 
-include("../includes/header.php");
-include("../includes/navbar.php");
+$usuarios = mysqli_query($conn, "SELECT * FROM usuarios ORDER BY id DESC");
 ?>
 
-<section class="pagina">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
 
-<div class="container">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/usuarios.css">
+</head>
 
-    <div class="titulo-admin">
-        <h1>Administración de Usuarios</h1>
-        <a href="agregar_usuario.php" class="btn">+ Nuevo Usuario</a>
-    </div>
+<body>
 
-    <div class="tabla-responsive">
+<?php include("../includes/navbar_admin.php"); ?>
 
-        <table class="tabla-admin">
+<div class="container mt-5">
 
-            <thead>
+    <div class="card shadow">
 
-                <tr>
-                    <th>ID</th>
-                    <th>Foto</th>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Rol</th>
-                    <th>Acciones</th>
-                </tr>
+        <div class="card-header bg-dark text-white">
+            <h3>👤 Usuarios Registrados</h3>
+        </div>
 
-            </thead>
+        <div class="card-body">
 
-            <tbody>
+            <table class="table table-hover text-center">
 
-            <?php while($fila = mysqli_fetch_assoc($usuarios)){ ?>
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Fecha Registro</th>
+                        <th>Acción</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                <?php while($fila = mysqli_fetch_assoc($usuarios)){ ?>
 
                 <tr>
 
                     <td><?= $fila['id']; ?></td>
 
-                    <td>
-
-                    <?php if(!empty($fila['foto'])){ ?>
-
-                        <img src="../uploads/<?= $fila['foto']; ?>" class="foto-tabla">
-
-                    <?php }else{ ?>
-
-                        <img src="../assets/img/user.png" class="foto-tabla">
-
-                    <?php } ?>
-
-                    </td>
-
                     <td><?= $fila['nombre']; ?></td>
 
                     <td><?= $fila['correo']; ?></td>
 
-                    <td><?= ucfirst($fila['rol']); ?></td>
+                    <td>
+
+                        <?php if($fila['rol']=="admin"){ ?>
+
+                            <span class="badge bg-success">Administrador</span>
+
+                        <?php }else{ ?>
+
+                            <span class="badge bg-primary">Usuario</span>
+
+                        <?php } ?>
+
+                    </td>
+
+                    <td><?= $fila['fecha_registro']; ?></td>
 
                     <td>
 
-                        <a href="editar_usuario.php?id=<?= $fila['id']; ?>" class="editar">
-                            Editar
-                        </a>
+                        <?php if($fila['id'] != $_SESSION['id']){ ?>
 
                         <a href="eliminar_usuario.php?id=<?= $fila['id']; ?>"
-                           class="eliminar"
-                           onclick="return confirm('¿Eliminar este usuario?')">
-                            Eliminar
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('¿Eliminar usuario?')">
+
+                            🗑 Eliminar
+
                         </a>
+
+                        <?php }else{ ?>
+
+                        <span class="badge bg-secondary">
+
+                            Sesión actual
+
+                        </span>
+
+                        <?php } ?>
 
                     </td>
 
                 </tr>
 
-            <?php } ?>
+                <?php } ?>
 
-            </tbody>
+                </tbody>
 
-        </table>
+            </table>
+
+        </div>
 
     </div>
 
 </div>
 
-</section>
-
-<?php include("../includes/footer.php"); ?>
+</body>
+</html>

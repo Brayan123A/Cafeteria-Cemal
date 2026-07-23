@@ -7,46 +7,40 @@ include '../includes/navbar.php';
 
 if(isset($_POST['login'])){
 
-    $correo = mysqli_real_escape_string($conn,$_POST['correo']);
+    $correo = mysqli_real_escape_string($conn, $_POST['correo']);
     $password = $_POST['password'];
 
-    $sql = mysqli_query($conn,"SELECT * FROM usuarios WHERE correo='$correo'");
+    $sql = mysqli_query($conn, "SELECT * FROM usuarios WHERE correo='$correo'");
 
-    if(mysqli_num_rows($sql) > 0){
+    if(mysqli_num_rows($sql) == 1){
 
         $usuario = mysqli_fetch_assoc($sql);
 
-        if(password_verify($password,$usuario['password'])){
+        // Verificar contraseña
+        if(password_verify($password, $usuario['password'])){
 
+            // Crear sesiones
             $_SESSION['id'] = $usuario['id'];
             $_SESSION['nombre'] = $usuario['nombre'];
             $_SESSION['correo'] = $usuario['correo'];
             $_SESSION['rol'] = $usuario['rol'];
 
+            // Redirección según el rol
             if($usuario['rol'] == 'admin'){
-
-                header("Location: admin/dashboard.php");
-
+                header("Location: ../admin/dashboard.php");
             }else{
-
                 header("Location: ../paginas/index.php");
-
             }
 
             exit();
 
         }else{
-
-            echo "<script>alert('Contraseña incorrecta');</script>";
-
+            echo "<script>alert('Contraseña incorrecta'); window.history.back();</script>";
         }
 
     }else{
-
-        echo "<script>alert('El correo no existe');</script>";
-
+        echo "<script>alert('El correo no existe'); window.history.back();</script>";
     }
-
 }
 ?>
 

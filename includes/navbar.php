@@ -1,13 +1,8 @@
 
 
-
+    <ul class="navbar-nav ms-auto">
  
 
-
-  
-
-</div>
-<ul class="navbar-nav ms-auto">
     
     <li class="nav-item">
         <a class="nav-link active" href="../paginas/index.php">
@@ -24,11 +19,21 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="../paginas/menu.php">
+        <a class="nav-link" href="..//menu.php">
             <i class="bi bi-list"></i>
             Menú
         </a>
     </li>
+
+     <!-- Solo visible para administradores -->
+    <?php if(isset($_SESSION['rol']) && $_SESSION['rol']=="admin"){ ?>
+
+    <li class="nav-item">
+        <a class="nav-link" href="../admin/dashboard.php">
+            🛠 Administrador
+        </a>
+    </li>
+     <?php } ?>
 
     <?php if(isset($_SESSION['id'])){ ?>
 
@@ -61,7 +66,7 @@
                 <li><hr class="dropdown-divider"></li>
 
                 <li>
-                    <a class="dropdown-item text-danger" href="../logout.php">
+                    <a class="dropdown-item text-danger" href="../auth/logout.php">
                         🚪 Cerrar sesión
                     </a>
                 </li>

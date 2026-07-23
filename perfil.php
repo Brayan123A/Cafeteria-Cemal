@@ -1,83 +1,70 @@
 <?php
 session_start();
-include("config/conexion.php");
-
-include('includes/header.php');
-include('includes/navbar.php');
-
+include("../config/conexion.php");
 
 if (!isset($_SESSION['id'])) {
-    header("Location: auth/login.php");
+    header("Location: ../login.php");
     exit();
 }
+
+if ($_SESSION['rol'] != "admin") {
+    header("Location: dashboard.php");
+    exit();
+}
+
+include("../includes/header.php");
+include("../includes/navbar_admin.php");
 
 $id = $_SESSION['id'];
 
 $sql = mysqli_query($conn, "SELECT * FROM usuarios WHERE id='$id'");
-$usuario = mysqli_fetch_assoc($sql);
-
-
+$admin = mysqli_fetch_assoc($sql);
 ?>
 
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/perfil.css">
+<link rel="stylesheet" href="../assets/css/">
 
-<section class="profile-section">
+<div class="container mt-5">
 
-    <div class="profile-card">
+    <div class="perfil-card">
 
-      
+        <h2>👤 Perfil del Administrador</h2>
 
-        <h2><?php echo htmlspecialchars($usuario['nombre']); ?></h2>
+        <div class="perfil-info">
 
-        
+            <h3><?php echo htmlspecialchars($admin['nombre']); ?></h3>
 
-        <div class="profile-details">
+            <p>Administrador de Cafetería CEMAL</p>
 
-            <div class="profile-item">
-                <span class="label">Nombre:</span>
-                <span class="value">
-                    <?php echo htmlspecialchars($usuario['nombre']); ?>
-                </span>
-            </div>
+            <hr>
 
-            <div class="profile-item">
-                <span class="label">Correo:</span>
-                <span class="value">
-                    <?php echo htmlspecialchars($usuario['correo']); ?>
-                </span>
-            </div>
+            <p><strong>Correo:</strong><br>
+                <?php echo htmlspecialchars($admin['correo']); ?>
+            </p>
 
-            <div class="profile-item">
-                <span class="label">Rol:</span>
-                <span class="value">
-                    <?php echo ucfirst($usuario['rol']); ?>
-                </span>
-            </div>
+            <p><strong>Rol:</strong><br>
+                <?php echo ucfirst($admin['rol']); ?>
+            </p>
 
-            <div class="profile-item">
-                <span class="label">Registrado:</span>
-                <span class="value">
-                    <?php echo $usuario['fecha_registro']; ?>
-                </span>
-            </div>
+            <p><strong>Fecha de Registro:</strong><br>
+                <?php echo $admin['fecha_registro']; ?>
+            </p>
 
         </div>
 
-        <div class="form-actions">
+        <div class="botones">
 
-            <a href="editar_perfil.php" class="btn-submit">
-                Editar Perfil
+            <a href="dashboard.php" class="btn-editar">
+                🏠 Dashboard
             </a>
 
-            <a href="logout.php" class="btn-cancel">
-                Cerrar Sesión
+            <a href="../logout.php" class="btn-salir">
+                🚪 Cerrar Sesión
             </a>
 
         </div>
 
     </div>
 
-</section>
+</div>
 
-<?php include("includes/footer.php"); ?>
+<?php include("../includes/footer.php"); ?>

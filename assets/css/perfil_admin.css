@@ -1,21 +1,22 @@
 body{
     background:#f5f5f5;
-    font-family:Arial, sans-serif;
+    font-family:'Segoe UI',sans-serif;
 }
 
 .perfil-card{
-    max-width:450px;
+    max-width:500px;
     margin:60px auto;
     background:#fff;
     padding:40px;
-    border-radius:15px;
+    border-radius:18px;
     text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
 }
 
 .perfil-card h2{
     color:#6F4E37;
     margin-bottom:25px;
+    font-weight:bold;
 }
 
 .perfil-info h3{
@@ -25,23 +26,34 @@ body{
 }
 
 .perfil-info p{
-    color:#777;
-    margin-bottom:30px;
+    color:#555;
+    font-size:17px;
+    margin-bottom:15px;
+}
+
+.perfil-info strong{
+    color:#6F4E37;
+}
+
+hr{
+    margin:25px 0;
 }
 
 .botones{
     display:flex;
     justify-content:center;
     gap:15px;
+    margin-top:25px;
 }
 
 .btn-editar,
 .btn-salir{
-    padding:10px 20px;
-    border-radius:8px;
     text-decoration:none;
-    color:#fff;
+    padding:12px 22px;
+    border-radius:10px;
+    color:white;
     font-weight:bold;
+    transition:.3s;
 }
 
 .btn-editar{
@@ -50,6 +62,7 @@ body{
 
 .btn-editar:hover{
     background:#4E342E;
+    color:white;
 }
 
 .btn-salir{
@@ -58,4 +71,5 @@ body{
 
 .btn-salir:hover{
     background:#bb2d3b;
+    color:white;
 }
